@@ -1,0 +1,98 @@
+﻿@model BillViewModel
+
+
+<div class="col-12 col-lg-10 col-xl-8" style="border:1px solid white">
+    <div class="card shadow" id="print">
+        <div class="card-body p-lg-4">
+            <div class="row">
+                <div class="col-12 text-center mb-1 logo">
+                    <img src="~/app-assets/img/logos/logo-big-black.png" class="logo" width="200" />
+                    <h2 class="mb-0 text-uppercase">فاکتور</h2>
+                    <hr />
+                </div>
+            </div> <!-- /.row -->
+            <div class="row ">
+                <div class="col-6 custname">
+                    <p>نام مشتری:@TempData["Message"]</p>
+                </div>
+                <div class="col-6 text-right billdate">
+                    <p>تاریخ صدور فاکتور: @DateTime.Now.ToShortDateString()</p>
+                </div>
+            </div>
+            <table border="1" class="table table-borderless table-striped tstayle" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">شماره</th>
+                        <th scope="col">تفصیلات</th>
+                        <th scope="col" class="text-right">فی</th>
+                        <th scope="col" class="text-right">تعداد</th>
+                        <th scope="col" class="text-right">کل</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        int counter = 1;
+                        int Gtotal = 0;
+                    }
+                    @foreach (var item in Model.Bill)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Name</td>
+                            <td class="text-right">@item.Price</td>
+                            <td class="text-right">@item.Qty</td>
+                            <td class="text-right">@item.Total</td>
+
+                        </tr>
+                        Gtotal += (@item.Price * @item.Qty);
+                        counter++;
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr style="color:red">
+                        <th colspan="4">جمع کل</th>
+                        <th class="text-right">@Gtotal</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div> <!-- /.card-body -->
+
+    </div> <!-- /.card -->
+    <button class="btn btn-primary icon-printer mb-5" onclick="PrintElem('print')"> چاپ</button>
+    <a asp-action="List" asp-controller="Customer" class="btn btn-secondary mb-5">برگشت</a>
+
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+
+
+        function PrintElem(elem) {
+            var data = document.getElementById(elem).innerHTML;
+            Popup($(data).html());
+        }
+
+        function Popup(data) {
+            var mywindow = window.open('', 'new div', 'height=700,width=900');
+            mywindow.document.write('<html><head><title>PrintBill</title>');
+            mywindow.document.write('<style>body{}.logo{text-align:center}.custname{text-align:right;direction:ltr;}.tstayle{ direction:rtl;}td{text-align:center}tr:nth-child(odd){background:cornflowerblue}tr:nth-child(even){background:deepskyblue}</style>');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(data);
+            mywindow.document.write('</body></html>');
+
+            mywindow.print();
+            mywindow.close();
+            mywindow.focus();
+            setTimeout(function () { mywindow.print(); }, 1000);
+            mywindow.close();
+
+            return true;
+        }
+
+    </script>
+}

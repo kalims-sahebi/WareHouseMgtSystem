@@ -1,0 +1,29 @@
+﻿@model OrderListViewModel
+
+<div class="card-body">
+    <h5 class="card-title">نام مشتری:@TempData["Message"]</h5>
+    <table class="table table-hover table-hover">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>تفصیلات</th>
+                <th>تعداد</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model.OrderList)
+            {
+                <tr>
+                    
+                    <td>@emp.Name</td>
+                    <td>@emp.Description</td>
+                    <td>@emp.Qty</td>
+                    <td>
+                        <a asp-action="DeleteOrder" asp-controller="Customer" asp-route-id="@emp.OrderId" onclick="return confirm('Are you sure?')"><i class="icon-trash text-danger"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

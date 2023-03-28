@@ -1,0 +1,95 @@
+﻿@model ItemModel
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title-wrap bar-success">
+            <h4 class="card-title mb-0">افزودن جنس جدید</h4>
+        </div>
+    </div>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong class="text-info">معلومات!</strong> @TempData["Message"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    }
+    <div class="card-body">
+        <div class="px-3">
+            <form class="form" asp-action="Add" asp-controller="Item" method="post">
+                <div class="form-body">
+                    <div class="row">
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label for="basicInput" asp-for="@Model.Name"></label>
+                                <input type="text" asp-for="@Model.Name" name="Name" class="form-control" autocomplete="off">
+                                <span asp-validation-for="@Model.Name" class="red"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label for="basicInput" asp-for="@Model.Code"></label>
+                                <input type="text" asp-for="@Model.Code" name="Code" class="form-control" id="basicInput" autocomplete="off">
+                                <span asp-validation-for="@Model.Code" class="red"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label for="basicInput" asp-for="@Model.Description"></label>
+                                <input type="text" asp-for="@Model.Description" name="Description" class="form-control" id="basicInput" autocomplete="off" >
+                                <span asp-validation-for="@Model.Description" class="red"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label for="basicInput" asp-for="@Model.Price"></label>
+                                <input  asp-for="@Model.Price" name="Price" class="form-control" id="basicInput" autocomplete="off">
+                                <span asp-validation-for="@Model.Price" class="red"></span>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label for="basicInput" asp-for="@Model.Qty"></label>
+                                <input  asp-for="@Model.Qty" name="Qty" class="form-control" id="basicInput" autocomplete="off">
+                                <span asp-validation-for="@Model.Qty" class="red"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label asp-for="@Model.MeasurementId"></label>
+                                <select asp-items="@Model.Measurement" name="MeasurementId" class="form-control">
+                                    <option selected disabled>انتخاب کنبد</option>
+                                </select>
+                                <span asp-validation-for="@Model.Measurement" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label asp-for="@Model.CategoryId"></label>
+                                <select asp-items="@Model.Category" name="CategoryId" class="form-control">
+                                    <option selected disabled>انتخاب کنبد</option>
+                                </select>
+                                <span asp-validation-for="@Model.Category" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+                        <div class=" col-3 mb-1">
+                            <fieldset class="form-group">
+                                <label asp-for="@Model.SupplierId"></label>
+                                <select asp-items="@Model.Supplier" name="SupplierId" class="form-control">
+                                    <option selected disabled>انتخاب کنبد</option>
+                                </select>
+                                <span asp-validation-for="@Model.Supplier" class="text-danger"></span>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">ثبت</button>
+            </form>
+        </div>
+    </div>
+</div>

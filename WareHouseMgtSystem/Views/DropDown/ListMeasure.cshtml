@@ -1,0 +1,40 @@
+﻿@model MeasureListViewModel
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong class="text-info">معلومات!</strong> @TempData["Message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+}
+
+
+
+<div class="card-body">
+    <h5 class="card-title">لیست واحد</h5>
+    <table class="table table-hover table-hover">
+        <thead>
+            <tr>
+                <th>شماره</th>
+                <th> واحد</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int counter = 1; }
+            @foreach (var emp in Model.MeasureList)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@emp.Measure</td>
+                    <td>
+                        <a asp-action="DeleteMeasure" asp-controller="DropDown" asp-route-id="@emp.MeasurementId" onclick="return confirm('Are you sure?')"><i class="icon-trash text-danger"></i></a>
+                    </td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+</div>

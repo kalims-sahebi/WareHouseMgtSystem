@@ -1,0 +1,33 @@
+﻿@model MeasurementModel
+
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success">
+                <h4 class="card-title mb-0">ثبت واحد</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                <form class="form" method="post" asp-action="AddMeasure" asp-controller="DropDown">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Measure"></label>
+                                    <input asp-for="@Model.Measure" name="Measure" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Measure" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary fe fe-24 fe-save"> ثبت</button>
+                    <a asp-action="ListMeasure" asp-controller="DropDown" class="btn btn-danger fe fe-16 fe-x-square"> لغو</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

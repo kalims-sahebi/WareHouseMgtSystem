@@ -1,0 +1,134 @@
+﻿@model CustomerListViewModel
+
+
+    <div class="content-wrapper mb-5">
+        <div class="container-fluid">
+            <!-- DOM - jQuery events table -->
+            <section id="dom">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            @if (TempData["Message"] != null)
+                            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong class="text-info">معلومات!</strong> @TempData["Message"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>}
+
+                            <div class="card-header">
+                                <div class="card-title-wrap bar-success">
+                                    <h4 class="card-title">لیست مشتری جاری</h4>
+                                </div>
+                            </div>
+                            <div class="card-body collapse show">
+                                <div class="card-block card-dashboard">
+                                    <table class="table table-striped table-bordered dom-jQuery-events" id="datatb">
+                                        <thead>
+                                            <tr>
+                                                <th>شماره</th>
+                                                <th>نام</th>
+                                                <th>آدرس</th>
+                                                <th>شماره تماس</th>
+                                                <th align="center">سفارشات</th>
+                                                <th align="center">عملیات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{int counter = 1; }
+                                            @foreach (var item in Model.Customer)
+                                            {
+                                <tr>
+                                    <td style="display:none">@item.CustomerId</td>
+                                    <td>@counter</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                    <td align="center">
+
+                                        <a asp-action="PrintBill" asp-controller="Customer" asp-route-id="@item.CustomerId" title="چاپ فاکتور"><i class="icon-printer" style="color:darkcyan"></i></a>
+                                        <a href="#" title="افزودن سفارش" data-toggle="modal" data-target="#OrderModal"><i class="icon-plus" style="color:darkcyan"></i></a>
+                                        <a asp-action="OrderList" asp-controller="Customer" asp-route-id="@item.CustomerId" title="حذف سفارش"><i class="icon-close text-danger"></i></a>
+
+                                    </td>
+                                    <td align="center">
+                                        <a asp-action="Edit" asp-controller="Customer" asp-route-id="@item.CustomerId"><i class="icon-pencil"></i></a>
+                                        <a asp-action="Delete" asp-controller="Customer" asp-route-id="@item.CustomerId" onclick="return confirm('Are you sure?')"><i class="icon-trash text-danger"></i></a>
+                                    </td>
+
+                                    @{counter++; }
+                                </tr>
+}
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>شماره</th>
+                                                <th>نام</th>
+                                                <th>آدرس</th>
+                                                <th>شماره تماس</th>
+                                                <th align="center">سفارشات</th>
+                                                <th align="center">عملیات</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- DOM - jQuery events table -->
+        </div>
+        @await Html.PartialAsync("AddOrder")
+    </div>
+
+
+
+@section Scripts{
+    <script src="~/app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
+    <script src="~/app-assets/vendors/js/datatable/datatables.min.js"></script>
+    <script src="~/app-assets/vendors/js/datatable/dataTables.buttons.min.js"></script>
+    <script src="~/app-assets/js/data-tables/datatable-advanced.js"></script>
+    <script src="~/app-assets/vendors/js/core/popper.min.js"></script>
+    <script src="~/app-assets/js/components-modal.min.js"></script>
+
+        
+
+    <script>
+
+        var CustId;
+        $('#datatb').find('tr').click(function () {
+            CustId = parseInt($(this).find('td:first').text());
+        });
+
+        $("input#btnAddOrder").click(function () {
+                var o = {
+                    ItemId: parseInt($("#ItemId").val()),
+                    Qty: parseInt($("#Qty").val()),
+                    Description: $("#Description").val(),
+                    CustomerId: CustId
+                };
+
+            var a = JSON.stringify(o);
+                $.ajax({
+                    url: "@Url.Action("AddOrder", "Customer")",
+                    type: "POST",
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    data: a,
+                    success: function (data) {
+                        alert("سفارش موفقانه ثبت شد");
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+
+                });
+        });
+
+    </script>
+
+}
+

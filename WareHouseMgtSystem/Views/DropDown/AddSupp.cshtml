@@ -1,0 +1,40 @@
+﻿@model SupplierModel
+
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success">
+                <h4 class="card-title mb-0">ثبت  کتگوری</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                <form class="form" method="post" asp-action="AddSupp" asp-controller="DropDown">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.SupplierName"></label>
+                                    <input asp-for="@Model.SupplierName" name="SupplierName" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.SupplierName" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Brand"></label>
+                                    <input asp-for="@Model.Brand" name="Brand" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Brand" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary fe fe-24 fe-save"> ثبت</button>
+                    <a asp-action="ListSupp" asp-controller="DropDown" class="btn btn-danger fe fe-16 fe-x-square"> لغو</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

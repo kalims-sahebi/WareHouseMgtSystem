@@ -1,0 +1,54 @@
+﻿@model CustomerModel
+
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success">
+                <h4 class="card-title mb-0">ویرایش مشتری</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                <form class="form" method="post" asp-action="Edit" asp-controller="Customer">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.FullName"></label>
+                                    <input asp-for="@Model.FullName" name="FullName" value="@Model.FullName" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.FullName" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Address"></label>
+                                    <input asp-for="@Model.Address" name="Address" value="@Model.Address" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Phone"></label>
+                                    <input asp-for="@Model.Phone" name="Phone" value="@Model.Phone" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Balance"></label>
+                                    <input asp-for="@Model.Balance" name="Balance" value="@Model.Balance" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Balance" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" value="@Model.CustomerId" name="CustomerId" />
+                    <button type="submit" class="btn btn-primary fe fe-24 fe-save"> ثبت</button>
+                    <a asp-action="List" asp-controller="Customer" class="btn btn-danger fe fe-16 fe-x-square"> لغو</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

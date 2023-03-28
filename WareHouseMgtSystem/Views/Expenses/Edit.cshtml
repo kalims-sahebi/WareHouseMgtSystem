@@ -1,0 +1,62 @@
+﻿@model ExpensesModel
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong class="text-info">معلومات!</strong> @TempData["Message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+}
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success">
+                <h4 class="card-title mb-0">ویرایش  مصارف</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                <form method="post" asp-action="Edit" asp-controller="Expenses">
+                    <div class="form-row">
+                        <div class="form-group col-xl-6 col-lg-6 col-md-12 mb-1">
+                            <label asp-for="@Model.Description"></label>
+                            <input asp-for="@Model.Description" name="Description" value="@Model.Description" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-xl-3 col-lg-6 col-md-12 mb-1">
+                            <label asp-for="@Model.Amount"></label>
+                            <input asp-for="@Model.Amount" name="Amount" value="@Model.Amount" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="@Model.Amount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-xl-3 col-lg-6 col-md-12 mb-1">
+                            <label asp-for="@Model.DateString"></label>
+                            <input name="DateString" type="text" value="@Model.DateString" class="form-control shamsi-date-picker" autocomplete="off" />
+                            <span asp-validation-for="@Model.DateString" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" value="@Model.ExpensesId" name="ExpensesId" />
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger">
+
+                    </div>
+                    <button type="submit" class="btn btn-primary fe fe-24 fe-save"> ثبت</button>
+                    <a asp-action="List" asp-controller="Expenses" class="btn btn-danger fe fe-16 fe-x-square"> لغو</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("input.shamsi-date-picker").persianDatepicker({ showGregorianDate: !1 });
+        });
+    </script>
+}

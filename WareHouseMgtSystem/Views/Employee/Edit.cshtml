@@ -1,0 +1,65 @@
+﻿@model EmployeeModel
+
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title-wrap bar-success">
+                <h4 class="card-title mb-0">ویرایش کارمند </h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="px-3">
+                <form class="form" method="post" asp-action="Edit" asp-controller="Employee">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <input type="hidden" name="EmployeeId" value="@Model.EmployeeId" />
+                                    <label asp-for="@Model.FullName"></label>
+                                    <input asp-for="@Model.FullName" value="@Model.FullName" name="FullName" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.FullName" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Address"></label>
+                                    <input asp-for="@Model.Address" value="@Model.FullName" name="Address" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Phone"></label>
+                                    <input asp-for="@Model.Phone" value="@Model.FullName" name="Phone" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.Salary"></label>
+                                    <input asp-for="@Model.Salary" value="@Model.Salary" name="Salary" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="@Model.Salary" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                                <fieldset class="form-group">
+                                    <label asp-for="@Model.PositionId"></label>
+                                    <select asp-items="@Model.Position" name="PositionId" class="form-control">
+                                        <option selected disabled>انتخاب کنبد</option>
+                                    </select>
+                                    <span asp-validation-for="@Model.Position" class="text-danger"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary fe fe-24 fe-save"> ثبت</button>
+                    <a asp-action="List" asp-controller="Employee" class="btn btn-danger fe fe-16 fe-x-square"> لغو</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

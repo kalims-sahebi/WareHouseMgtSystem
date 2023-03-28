@@ -1,0 +1,45 @@
+﻿@model EmployeeListViewModel
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong class="text-info">معلومات!</strong> @TempData["Message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+}
+
+
+
+<div class="card-body">
+    <h5 class="card-title">لیست کارمندان</h5>
+    <table class="table table-hover table-hover">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>شماره مبایل</th>
+                <th>آدرس</th>
+                <th>وظیفه</th>
+                <th>معاش</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model.Employee)
+            {
+                <tr>
+                    <td>@emp.FullName</td>
+                    <td>@emp.Phone</td>
+                    <td>@emp.Address</td>
+                    <td>@emp.PositionTitle</td>
+                    <td>@emp.Salary</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Employee" asp-route-id="@emp.EmployeeId"><i class="icon-pencil"></i></a>
+                        <a asp-action="Delete" asp-controller="Employee" asp-route-id="@emp.EmployeeId" onclick="return confirm('Are you sure?')"><i class="icon-trash text-danger"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

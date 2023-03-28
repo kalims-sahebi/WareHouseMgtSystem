@@ -1,0 +1,501 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class="loading">
+
+<!-- Mirrored from pixinvent.com/demo/convex-bootstrap-admin-dashboard-template/demo-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Sep 2018 14:53:24 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WareHouseMgtSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>eCommerce Dashboard - Convex bootstrap 4 admin dashboard template</title>
+    <link rel="apple-touch-icon" sizes="60x60" href="~/app-assets/img/ico/apple-icon-60.html">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/app-assets/img/ico/apple-icon-76.html">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/app-assets/img/ico/apple-icon-120.html">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/app-assets/img/ico/apple-icon-152.html">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/demo/convex-bootstrap-admin-dashboard-template/app-assets/img/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="~/app-assets/img/ico/favicon-32.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/fonts/feather/style.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/fonts/simple-line-icons/style.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/prism.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/tables/datatable/datatables.min.css">
+
+    <link href="~/plugins/shamsidatepicker/datepicker.css" rel="stylesheet" />
+
+
+    <link href="~/app-assets/vendors/css/tables/datatable/responsive.dataTables.min.css" rel="stylesheet" />
+</head>
+<body data-col="2-columns" class=" 2-columns ">
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+    <div class="wrapper">
+
+
+        <div data-active-color="white" data-background-color="black" data-image="~/app-assets/img/sidebar-bg/08.jpg" class="app-sidebar">
+            <div class="sidebar-header">
+                <div class="logo clearfix">
+                    <a asp-action="index" asp-controller="Home" class="logo-text float-right">
+                        <div class="logo-img"><img src="~/app-assets/img/logo.png" alt="Convex Logo" /></div><span class="text align-middle">مایل سادات</span>
+                    </a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="ft-disc toggle-icon"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-circle"></i></a>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="nav-container">
+                    <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+                        @if (User.IsInRole("ADMINISTRATOR"))
+                        {
+                            <li class="has-sub nav-item">
+                                <a href="#"><i class="icon-home"></i><span data-i18n="" class="menu-title">داشبورد</span></a>
+                                <ul class="menu-content">
+                                    <li class="has-sub nav-item">
+                                        <a href="#"><i class="icon-list"></i><span data-i18n="" class="menu-title"> لست ها</span></a>
+                                        <ul class="menu-content">
+                                            <li>
+                                                <a asp-action="AddCat" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-plus"> &nbsp;&nbsp;افزودن کتگوری</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="ListCat" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-list">&nbsp; &nbsp; لست کتگوری</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="AddMeasure" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-plus">&nbsp;&nbsp; افزودن واحد</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="ListMeasure" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-list">&nbsp;&nbsp; لست واحد</span></a>
+                                            </li>
+                                            <li>
+
+                                                <a asp-action="AddSupp" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-plus">&nbsp;&nbsp; توضیع کننده</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="ListSupp" asp-controller="DropDown"><span class="ml-1 item-text fe fe-16 fe-file-text icon-list">&nbsp;&nbsp; لست توضیع</span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub nav-item">
+                                        <a href="#"><i class="icon-briefcase"></i><span data-i18n="" class="menu-title"> صندوق پول</span></a>
+                                        <ul class="menu-content">
+                                            <li>
+                                                <a asp-action="Status" asp-controller="Safe"><span>وضعیت صندوق</span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub nav-item">
+                                        <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title">مدیریت یوزر</span></a>
+                                        <ul class="menu-content">
+                                            <li>
+                                                <a asp-action="ListRoles" asp-controller="Administration"><span class="ml-1 item-text fe fe-16 fe-file-text"> لیست رول</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="Register" asp-controller="Account"><span class="ml-1 item-text fe fe-16 fe-user"> ثبت یوزر جدید</span></a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub nav-item">
+                                        <a href="#"><i class="icon-bulb"></i><span data-i18n="" class="menu-title">مدیریت کارمند</span></a>
+                                        <ul class="menu-content">
+                                            <li>
+                                                <a asp-action="Add" asp-controller="Employee"><span class="ml-1 item-text fe fe-16 fe-user"> ثبت کارمند جدید</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="List" asp-controller="Employee"><span class="ml-1 item-text fe fe-16 fe-file-text"> لیست کارمند</span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
+                        <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">اجناس</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a asp-action="Add" asp-controller="Item" class="menu-item">افزودن جنس</a>
+                                </li>
+                                <li>
+                                    <a asp-action="List" asp-controller="Item" class="menu-item">لیست اجناس</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-arrow-right"></i><span data-i18n="" class="menu-title">اجناس خروجی</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a asp-action="Add" asp-controller="OutItem" class="menu-item">افزودن </a>
+                                </li>
+                                <li>
+                                    <a asp-action="List" asp-controller="OutItem" class="menu-item">لیست </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-arrow-left"></i><span data-i18n="" class="menu-title">اجناس ورودی</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a asp-action="Add" asp-controller="InItem" class="menu-item">افزودن </a>
+                                </li>
+                                <li>
+                                    <a asp-action="List" asp-controller="InItem" class="menu-item">لیست </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title">مشتری</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a asp-action="Add" asp-controller="Customer" class="menu-item">افزودن مشتری</a>
+                                </li>
+                                <li>
+                                    <a asp-action="List" asp-controller="Customer" class="menu-item">لیست مشتری جاری</a>
+                                </li>
+                                <li>
+                                    <a asp-action="PrintedList" asp-controller="Customer" class="menu-item">لیست چاپ شده </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-list"></i><span data-i18n="" class="menu-title">مصارف</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a asp-action="Add" asp-controller="Expenses" class="menu-item">ثبت مصارف</a>
+                                </li>
+                                <li>
+                                    <a asp-action="List" asp-controller="Expenses" class="menu-item">لیست مصارف</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-background"></div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-faded">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-right"><span class="sr-only">تغییر ناوبری </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><span class="d-lg-none navbar-right navbar-collapse-toggle"><a class="open-navbar-container"><i class="ft-more-vertical"></i></a></span><a id="navbar-fullscreen" href="javascript:;" class="ml-2 display-inline-block apptogglefullscreen">
+
+                        <p class="d-none">تمام صفحه</p>
+                    </a><a class="mr-2 display-inline-block">
+
+                        <h1>سیستم مدیریت گدام شرکت مایل سادات</h1>
+                    </a>
+                    <div class="dropdown mr-2 display-inline-block">
+
+                    </div>
+                </div>
+                <div class="navbar-container">
+                    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                        <ul class="navbar-nav">
+
+
+                            <li class="dropdown nav-item mr-0">
+                                <a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-user-link dropdown-toggle">
+                                    <span> @User.Identity.Name</span> <span class="avatar avatar-online"><img id="navbar-avatar" src="~/app-assets/img/portrait/small/avatar-s-3.jpg" alt="avatar" /></span>
+                                    <p class="d-none">تنظیمات کاربر</p>
+                                </a>
+                                <div aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-left">
+                                    <div class="arrow_box_right">
+                                        <a asp-action="index" asp-controller="Home" class="dropdown-item py-1"><i class="ft-home ml-2"></i><span>خانه</span></a>
+                                        <div class="dropdown-divider"></div><a asp-action="Logout" asp-controller="Account" class="dropdown-item"><i class="ft-power ml-2"></i><span>خروج</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-panel">
+            <div class="main-content">
+                <div class="content-wrapper">
+                    <div class="container-fluid">
+                        @RenderBody()
+                        <footer class="border-top footer text-muted center mb-0">
+                            <div class="container center">
+                                <p>Copyright @DateTime.Now.Year &copy; All Rights Reserved Developed by: <a href="#"> Kalimullah sahebi </a></p>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    <aside id="notification-sidebar" class="notification-sidebar d-none d-sm-none d-md-block">
+        <a class="notification-sidebar-close"><i class="ft-x font-medium-3"></i></a>
+        <div class="side-nav notification-sidebar-content">
+            <div class="row">
+                <div class="col-12 mt-1">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a id="base-tab1" data-toggle="tab" aria-controls="base-tab1" href="#activity-tab" aria-expanded="true" class="nav-link active"><strong>فعالیت</strong></a></li>
+                        <li class="nav-item"><a id="base-tab2" data-toggle="tab" aria-controls="base-tab2" href="#settings-tab" aria-expanded="false" class="nav-link"><strong>تنظیمات</strong></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="activity-tab" role="tabpanel" aria-expanded="true" aria-labelledby="base-tab1" class="tab-pane active">
+                            <div id="activity-timeline" class="col-12 timeline-left">
+                                <h6 class="mt-1 mb-3 text-bold-400">فعالیت اخیر</h6>
+                                <div class="timeline">
+                                    <ul class="list-unstyled base-timeline activity-timeline ml-0">
+                                        <li>
+                                            <div class="timeline-icon bg-danger"><i class="ft-shopping-cart"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-danger">به روز رسانی</a><span class="d-block">علی رضایی تجهیزات جدیدی را برای دفتر منطقه ای خریداری کرد.</span></div><small class="text-muted">همین الان</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-primary"><i class="fa fa-plane"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-primary">اضافه</a><span class="d-block">پرواز بعدی شما برای ایالات متحده آمریکا در تاریخ 15 آگوست 2015 صورت خواهد گرفت.</span></div><small class="text-muted">25 ساعت پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-dark"><i class="ft-mic"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-dark">اختصاص داده</a><span class="d-block">سارا نظری یک پست صوتی برای کنفرانس بعدی ارسال کنید</span></div><small class="text-muted">15 روز پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-warning"><i class="ft-map-pin"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-warning">جدید</a><span class="d-block">علی محمدی یک فروشگاه جدید را در خیابان ولیعصر باز کنید</span></div><small class="text-muted">20 روز پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-primary"><i class="ft-inbox"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-primary">اضافه</a><span class="d-block">پست صوتی برای کنفرانس</span></div><small class="text-muted">2 هفته پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-danger"><i class="ft-mic"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-danger">به روز رسانی</a><span class="d-block">علی محمدی یک فروشگاه جدید را در خیابان ولیعصر باز کنید</span></div><small class="text-muted">1 ماه پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-dark"><i class="ft-inbox"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-dark">اختصاص داده</a><span class="d-block">سارا نظری یک پست صوتی برای کنفرانس بعدی ارسال کنید</span></div><small class="text-muted">1 ماه پیش</small>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-icon bg-warning"><i class="ft-map-pin"></i></div>
+                                            <div class="base-timeline-info"><a href="#" class="text-uppercase text-warning">جدید</a><span class="d-block">پروژه جدید با رضا محمودی آغاز شد. </span></div><small class="text-muted">2 ماه پیش</small>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="settings-tab" aria-labelledby="base-tab2" class="tab-pane">
+                            <div id="settings" class="col-12">
+                                <h6 class="mt-1 mb-3 text-bold-400">تنظیمات عمومی</h6>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">اطلاعیه</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="notifications1" checked="checked" type="checkbox" class="custom-control-input">
+                                                            <label for="notifications1" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>هنگام بررسی بله یا بدون پاسخ، از کادرهای جعبه استفاده کنید.</p>
+                                    </li>
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">نمایش فعالیت اخیر</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="recent-activity1" checked="checked" type="checkbox" class="custom-control-input">
+                                                            <label for="recent-activity1" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>برای مشخص کردن ویژگی لازم است که کادر ورودی خود را با ورودی مرتبط کنیم.</p>
+                                    </li>
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">اطلاعیه</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="notifications2" type="checkbox" class="custom-control-input">
+                                                            <label for="notifications2" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>هنگام بررسی بله یا بدون پاسخ، از کادرهای جعبه استفاده کنید.</p>
+                                    </li>
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">نمایش فعالیت اخیر</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="recent-activity2" type="checkbox" class="custom-control-input">
+                                                            <label for="recent-activity2" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>برای مشخص کردن ویژگی لازم است که کادر ورودی خود را با ورودی مرتبط کنیم.</p>
+                                    </li>
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">ایمیل های خود را نمایش دهید</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="show-emails" type="checkbox" class="custom-control-input">
+                                                            <label for="show-emails" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>هنگام بررسی بله یا بدون پاسخ، از کادرهای جعبه استفاده کنید.</p>
+                                    </li>
+                                    <li>
+                                        <div class="togglebutton">
+                                            <div class="switch">
+                                                <span class="text-bold-500">نمایش آمار کار</span>
+                                                <div class="float-right">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                                            <input id="show-stats" checked="checked" type="checkbox" class="custom-control-input">
+                                                            <label for="show-stats" class="custom-control-label"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>برای مشخص کردن ویژگی لازم است که کادر ورودی خود را با ورودی مرتبط کنیم.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div class="customizer border-left-blue-grey border-left-lighten-4 d-none d-sm-none d-md-block">
+        <a class="customizer-close"><i class="ft-x font-medium-3"></i></a><a id="customizer-toggle-icon" class="customizer-toggle bg-danger"><i class="ft-settings font-medium-4 fa fa-spin white align-middle"></i></a>
+        <div data-ps-id="df6a5ce4-a175-9172-4402-dabd98fc9c0a" class="customizer-content p-3 ps-container ps-theme-dark">
+            <h4 class="mb-0 text-bold-400">تم سفارشی</h4>
+            <p>سفارشی کردن و پیش نمایش در زمان واقعی</p>
+            <hr>
+            <h6 class="text-center text-bold-500 mb-3 text-uppercase">تصویر پس زمینه نوار کناری</h6>
+            <div class="cz-bg-image row">
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/01.jpg" width="50" height="100" alt="Bg image1" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/02.jpg" width="50" height="100" alt="Bg image2" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/03.jpg" width="50" height="100" alt="Bg image3" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/04.jpg" width="50" height="100" alt="Bg image4" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/05.jpg" width="50" height="100" alt="Bg image5" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/06.jpg" width="50" height="100" alt="Bg image6" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/07.jpg" width="50" height="100" alt="Bg image7" class="rounded box-shadow-2"></div>
+                <div class="col mb-3"><img src="~/app-assets/img/sidebar-bg/08.jpg" width="50" height="100" alt="Bg image8" class="rounded box-shadow-2"></div>
+            </div>
+            <hr>
+            <div class="togglebutton">
+                <div class="switch">
+                    <span class="text-bold-400">نمایش / عدم نمایش نوار کناری پس زمینه تصویر</span>
+                    <div class="float-left">
+                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                            <input id="sidebar-bg-img" type="checkbox" checked="" class="custom-control-input cz-bg-image-display">
+                            <label for="sidebar-bg-img" class="custom-control-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h6 class="text-center text-bold-500 mb-3 text-uppercase">گزینه های رنگ نوار کناری</h6>
+            <div class="cz-bg-color">
+                <div class="row p-1">
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="aqua-marine" class="gradient-aqua-marine d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="sublime-vivid" class="gradient-sublime-vivid d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="crystal-clear" class="gradient-crystal-clear d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="timber" class="gradient-timber d-block rounded box-shadow-2"></span></div>
+                </div>
+                <div class="row p-1">
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="black" class="bg-black d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="white" class="bg-white d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="primary" class="bg-primary d-block rounded box-shadow-2"></span></div>
+                    <div class="col mb-3"><span style="width:50px; height:100px;" data-bg-color="danger" class="bg-danger d-block rounded box-shadow-2"></span></div>
+                </div>
+            </div>
+            <hr>
+            <div class="togglebutton">
+                <div class="switch">
+                    <span class="text-bold-400">منو فشرده</span>
+                    <div class="float-left">
+                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                            <input id="cz-compact-menu" type="checkbox" class="custom-control-input cz-compact-menu">
+                            <label for="cz-compact-menu" class="custom-control-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <label for="cz-sidebar-width" class="text-bold-400">عرض نوار باریکه</label>
+                <select id="cz-sidebar-width" class="custom-select cz-sidebar-width float-right">
+                    <option value="small">کوچک</option>
+                    <option value="medium" selected="">متوسط</option>
+                    <option value="large">بزرگ</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
+    <script src="~/app-assets/js/persian-datepicker.min.js"></script>
+    <script src="~/app-assets/vendors/js/core/popper.min.js"></script>
+    <script src="~/app-assets/vendors/js/core/bootstrap.min.js"></script>
+    <script src="~/app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/app-assets/vendors/js/prism.min.js"></script>
+    <script src="~/app-assets/vendors/js/jquery.matchHeight-min.js"></script>
+    <script src="~/app-assets/vendors/js/screenfull.min.js"></script>
+    <script src="~/app-assets/vendors/js/pace/pace.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/app-assets/vendors/js/chartist.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CONVEX JS-->
+    <script src="~/app-assets/js/app-sidebar.js"></script>
+    <script src="~/app-assets/js/notification-sidebar.js"></script>
+    <script src="~/app-assets/js/customizer.js"></script>
+    <script src="~/plugins/shamsidatepicker/jquery-1.10.1.min.js"></script>
+    <script src="~/plugins/shamsidatepicker/datepicker.min.js"></script>
+
+
+    <!-- END CONVEX JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/app-assets/js/dashboard-ecommerce.js"></script>
+    <!-- END PAGE LEVEL JS-->
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
